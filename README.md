@@ -1,38 +1,44 @@
-# create-svelte
+# Tauri Svelte Tailwind Template
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+A template for creating a Tauri app with Svelte and Tailwind CSS.
 
-## Creating a project
+I created this template because the obvious method of adding Tailwind CSS to a Tauri project with Svelte produces a confusing PostCSS "Unknown Word" error.
 
-If you're seeing this, you've probably already done this step. Congrats!
+The following steps were used to create this template:
 
+1. Create a new Svelte project using:
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+npm create svelte@latest tauri-svelte-tailwind-template
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+2. Add Tailwind CSS to the project using:
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
 ```
 
-## Building
+3. Modify `tailwind.config.js` and add `src/app.css` and `src/routes/+layout.svelte` as follows according to [this guide](https://tailwindcss.com/docs/guides/sveltekit).
 
-To create a production version of your app:
-
+4. Add Tauri to the project using:
 ```bash
-npm run build
+npm install -D @tauri-apps/cli@next
 ```
 
-You can preview the production build with `npm run preview`.
+5. Initialize Tauri using:
+```bash
+npx tauri init
+```
+When prompted, specify `../src` as the directory containing the Web assets, and `http://localhost:5173` as the URL of the dev server.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+6. Add `src/routes/+layout.ts` with the following contents:
+```typescript
+export const prerender = true;
+export const ssr = false;
+```
+
+## Usage
+
+To start developing, run:
+```bash
+npx tauri dev
+```
