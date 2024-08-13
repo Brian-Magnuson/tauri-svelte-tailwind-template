@@ -2,7 +2,11 @@
 
 A template for creating a Tauri app with Svelte and Tailwind CSS.
 
-I created this template because the obvious method of adding Tailwind CSS to a Tauri project with Svelte produces a confusing PostCSS "Unknown Word" error.
+I created this template because the obvious method of adding Tailwind CSS to a Tauri project with Svelte produces a confusing PostCSS "Unknown Word" error when the dev server is started.
+The error goes away when the server refreshes, but it is still annoying. 
+The method I used in this template seems to work consistently on my machine.
+
+This template was made for my own use, but if you find it useful, feel free to use it.
 
 The following steps were used to create this template:
 
